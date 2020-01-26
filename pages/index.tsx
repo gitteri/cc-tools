@@ -4,7 +4,12 @@ const Index = () => (
     <>
         <div>
             <h1>Ethereum Tools</h1>
-            <Link href="/decode/hex">Decode Hex</Link>
+            <Link
+                href="/decode/hex"
+                as={process.env.BACKEND_URL + "/decode/hex"}
+            >
+                Decode Hex
+            </Link>
         </div>
         <style jsx global>{`
             body {
@@ -12,6 +17,6 @@ const Index = () => (
             }
         `}</style>
     </>
-  );
-  
-  export default Index;
+);
+
+export default Index;

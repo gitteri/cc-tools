@@ -7,7 +7,8 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "export": "next export"
+    "export": "next export",
+    "deploy": "rm -rf node_modules/.cache && rimraf out && next build && next export && touch out/.nojekyll && gh-pages -d out"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,9 @@
     "@types/node": "^13.5.0",
     "@types/react": "^16.9.19",
     "@types/react-dom": "^16.9.5",
+    "babel-plugin-transform-define": "^2.0.0",
+    "gh-pages": "^2.2.0",
+    "rimraf": "^3.0.0",
     "typescript": "^3.7.5"
   }
 }

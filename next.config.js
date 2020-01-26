@@ -1,7 +1,8 @@
 // This file is not going through babel transformation.
 // So, we write it in vanilla JS
 // (But you could use ES2015 features supported by your Node.js version)
-const isProduction = process.env.NODE_ENV === 'production';
+const repoNameURIPrefix =
+  process.env.NODE_ENV === 'production' ? '/cc-tools' : '';
 
 module.exports = {
   exportPathMap: function () {
@@ -10,10 +11,10 @@ module.exports = {
       "/decode/hex": { page: "/decode/hex" },
     }
   },
-  assetPrefix: isProduction ? '/cc-tools/' : '',
-  publicRuntimeConfig: {
-    // used in '/components/Link.js/', for more details go to the component itself
-    linkPrefix: isProduction ? '/next-hello-world' : ''
+  generateBuildId: async () => 'current',
+  assetPrefix: repoNameURIPrefix,
+  env: {
+    linkPrefix: repoNameURIPrefix,
   },
   webpack: (config, { dev }) => {
     // Perform customizations to webpack config
